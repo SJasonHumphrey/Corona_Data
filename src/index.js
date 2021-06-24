@@ -2,16 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import BaseLayout from './components/layouts/BaseLayout';
+import AboutUs from './components/AboutUs';
+import Plots from './components/Plots'
+import FAQ from './components/FAQ';
+import Forms from './components/Forms'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router,
+  Route, Switch
+} from 'react-router-dom'
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <BaseLayout>
+        <Switch>
+          <Route exact path='/' component={App}/>
+          <Route path='/about' component={AboutUs}/>
+          <Route path='/faq/:faqID' component={FAQ}/>
+          <Route path='/forms' component={Forms}/>
+          <Route path='/plots' component={Plots}/>
+        </Switch>
+      </BaseLayout>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
